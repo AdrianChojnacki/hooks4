@@ -1,14 +1,21 @@
 import { useState } from "react";
 
 const App = () => {
-  const [text, setText] = useState("");
+  const [value, setValue] = useState('');
 
-  const handleOnClick = () => setText(`${text}A`);
+  const handleOnChange = event => setValue(event.target.value.toUpperCase());
+  const handleClick = () => setValue('');
 
   return (
     <>
-      <button onClick={handleOnClick}>Dodaj "A"</button>
-      <h1>{text}</h1>
+      <input
+        value={value}
+        placeholder="wpisz..."
+        onChange={handleOnChange}
+        type="text"
+      />
+      <button onClick={handleClick}>Reset</button>
+      <h1 className="title">{value}</h1>
     </>
   );
 };
